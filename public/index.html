@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/bundle.js"></script>
+  <h1>Currency Converter</h1>
+</head>
+<body>
+  <div id="app">
+
+<br>
+<!-- #1 -->
+    <div id="amount">
+      <h3>From EUR to a selected currency</h3>
+      <label for="number">Amount</label>
+      <input type="number" v-model="amount"/>
+      <span>EUR</span>
+    </div>
+
+    <!-- DROPDOWN -->
+    <label for="ccy-dropdown">Select currency to convert to:</label>
+    <select id="ccy-dropdown" v-on:click="fetchFX" v-model="selectedCurrency">
+      <option class="ccyDropdown"
+      v-for="(value, key) in rates"
+      v-bind:value="key">{{ key }}</option>
+    </select>
+
+
+    <section>
+      <div class="currency" v-if="converted">
+        <span> This equals to  {{ converted }} </span>
+        <span>   {{ selectedCurrency }} </span>
+      </div>
+    </section>
+<br><br>
+<!-- #2 -->
+<div id="amount2">
+  <h3>From a selected currency to EUR</h3>
+  <label for="number">Amount</label>
+  <input type="number" v-model="amount2"/>
+  <br>
+  <span>
+    <label for="ccy-dropdown2">Select currency to convert from:</label>
+    <select id="ccy-dropdown2" v-on:click="fetchFX" v-model="selectedCurrency2">
+      <option class="ccyDropdown"
+      v-for="(value, key) in rates"
+      v-bind:value="key">{{ key }}</option>
+    </select>
+  </span>
+</div>
+
+<!-- DROPDOWN -->
+
+<section>
+  <div class="currency" v-if="converted2">
+    <span> This equals to  {{ converted2 }} EUR</span>
+
+  </div>
+</section>
+
+
+  </div>
+
+</body>
+</html>
